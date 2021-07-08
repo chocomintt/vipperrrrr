@@ -1,0 +1,123 @@
+local Plugin = {
+    ["PluginName"] = "Viperr's Commands",
+    ["PluginDescription"] = "This plugin was probably made by Viperr",
+    ["Commands"] = {
+        --slayer tycoon commands
+        ["stealmoney"] = {
+            ["ListName"] = "stealmoney",
+            ["Description"] = "Steals other players' money.",
+            ["Aliases"] = {"stealm"},
+            ["Function"] = function(args,speaker)
+                notify('Slayer Tycoon', "Stealing other player's money.")
+                getgenv().toggleison = true; --set this to false if you want to turn it off or true to turn on
+                
+                while getgenv().toggleison do
+                   wait(1)
+                for i,v in pairs(game:GetService("Workspace").TycoonSets.Tycoons:GetDescendants()) do
+                   if v:IsA("TouchTransmitter") and v.Parent.Name == "Giver" then
+                      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) 
+                      firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+                        end
+                    end
+                end
+            end
+
+        },
+        ["stopmoney"] = {
+            ["ListName"] = "stopmoney",
+            ["Description"] = "Stops stealing other players' money.",
+            ["Aliases"] = {"stopm"},
+            ["Function"] = function(args,speaker)
+                notify('Slayer Tycoon', "Stopped stealing other players' money.")
+
+                getgenv().toggleison = false; --set this to false if you want to turn it off or true to turn on
+                    
+                while getgenv().toggleison do
+                    wait(1)
+                for i,v in pairs(game:GetService("Workspace").TycoonSets.Tycoons:GetDescendants()) do
+                    if v:IsA("TouchTransmitter") and v.Parent.Name == "Giver" then
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) 
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+                       end
+                    end
+                end
+            end
+        },
+        ["stealnichirin"] = {
+            ["ListName"] = "stealnichirin",
+            ["Description"] = "Collects dropped Nichirin Ore",
+            ["Aliases"] = {"stealn"},
+            ["Function"] = function(args,speaker)
+                notify('Slayer Tycoon', 'Collecting dropped Nichirin Ore')
+
+                getgenv().stealNichirin = true;
+
+                while getgenv().stealNichirin do
+                    wait(1)
+                for i,v in pairs(workspace:GetDescendants()) do 
+                    if v:IsA("TouchTransmitter") and v.Parent.Name == "Handle" and v.Parent.Parent.Name == "Mishirin Ore" then 
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+                    end
+                end
+            end
+        end
+        },
+        ["stopnichirin"] = {
+            ["ListName"] = "stopnichirin",
+            ["Description"] = "Stops collecting dropped Nichirin Ore",
+            ["Aliases"] = {"stopn"},
+            ["Function"] = function(args,speaker)
+                notify('Slayer Tycoon', "Stopped collecting dropped Nichirin Ore")
+
+                getgenv().stealNichirin = false;
+
+                while getgenv().stealNichirin do
+                    wait(1)
+                for i,v in pairs(workspace:GetDescendants()) do 
+                    if v:IsA("TouchTransmitter") and v.Parent.Name == "Handle" and v.Parent.Parent.Name == "Mishirin Ore" then 
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0)
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1)
+                    end
+                end
+            end
+        end
+        },
+
+        -- non slayer tycoon scripts
+        ["factorysim"] = {
+            ["ListName"] = "factorysim",
+            ["Description"] = "Opens a GUI for Factory Simulator",
+            ["Aliases"] = {""},
+            ["Function"] = function(args,speaker)
+                notify('Factory Simulator', "xowie's Factory Simulator GUI loaded.")
+
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Xowie89/Roblox-Scripts/main/Factory%20Simulator%20%5BOVERHAUL%5D.lua"))()
+            end
+        },
+        ["unconventionalgui"] = {
+            ["ListName"] = "unConventionalGUI",
+            ["Description"] = "Opens a GUI for unConventional",
+            ["Aliases"] = {"uncgui"},
+            ["Function"] = function(args,speaker)
+                notify('unConventional', "HamstaGang's unConventional GUI loaded.")
+               
+                loadstring(game:HttpGet("https://scriptstream.xyz/ScriptStorage/unConventional.lua", true))()
+            end
+        },
+        ["showchat"] = {
+            ["ListName"] = "showchat",
+            ["Description"] = "Enables chat in games that hide/remove the chat.",
+            ["Aliases"] = {""},
+            ["Function"] = function(args,speaker)
+                notify('Infinite Yield', "SirelKilla's Enable Chat script loaded.")
+                
+                local chatFrame = game:GetService("Players").LocalPlayer.PlayerGui.Chat.Frame
+                chatFrame.ChatChannelParentFrame.Visible=true
+                chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
+            end
+        },
+    }
+}
+return Plugin
+

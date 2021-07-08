@@ -1,0 +1,105 @@
+/*
+  This is some pretty epic CSS...
+
+  To the stray dogs.
+*/
+
+/* Tags */
+
+*{
+  font-weight:lighter;
+  font-family:verdana;
+  text-align: left;
+  color: white;
+  padding: 12px;
+  padding-left:0.1;
+}
+
+div, span, blockquote{
+  font-size:20px;
+}
+
+h1{
+  padding-left: 50px;
+}
+
+
+/* Classes */
+
+.noUnderline{
+  text-decoration: none;
+}
+
+.cursor{
+  cursor: not-allowed;
+}
+
+.nav{
+  cursor: not-allowed;
+  text-decoration: none ;
+}
+
+.navbar{
+  float: right;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+}
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}
+
+.center{
+  text-align: center;
+}
+
+.background{
+  background-color:rgba(0,0,0,0.6);
+  width:fit-content;
+  border-radius: 5px;
+}
+
+.block{
+  display: block
+}
+
+/* Button Stuff */
+.button {
+  position: relative;
+  background-color:rgba(0,0,0,0.6);
+  border: none;
+  font-size: 20px;
+  color: #FFFFFF;
+  padding: 20px;
+  width: fit-content;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: not-allowed;
+  border-radius: 6px;
+}
+
+.button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
